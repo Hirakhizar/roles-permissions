@@ -1,6 +1,4 @@
 @extends('layouts.masterFile')
-
-
 @section('content')
     <div class="container">
         <h1 class="text-center">Assign Roles to Users</h1>
@@ -100,6 +98,7 @@
 
     </div>
 @endsection
+
 @section('scripts')
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>

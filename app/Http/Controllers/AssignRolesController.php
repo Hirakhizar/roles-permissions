@@ -8,23 +8,21 @@ use Illuminate\Support\Facades\Auth;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
-class AssignRolesController extends Controller
+class  AssignRolesController extends Controller
 {
-    public function dashboard(){
-        $user=Auth::user();
-        return view('layouts.masterFile',compact('user'));
-    }
+  
     public function index(){
-        
+        $authenticUser=Auth::user();
         $roles = Role::all();
         $permissions=Permission::all();
         $users=User::with('roles')->get();
         // dd($users);
-        return view("admin.assignPermissions",compact("roles","permissions","users"));
+        return view("admin.assignPermissions",compact("roles","permissions","users","authenticUser"));
 
     }
 
     public function assignPermissions(Request $request){
+        $user=Auth::user();
         collect($request->permissions)
             ->each(function ($permissionData, $roleId) {
                 $role = Role::findById($roleId);

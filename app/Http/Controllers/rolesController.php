@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Spatie\Permission\Models\Role;
 
 class rolesController extends Controller
@@ -12,8 +13,9 @@ class rolesController extends Controller
      */
     public function index()
     {
+        $authenticUser=Auth::user();
         $roles = Role::all();
-        return view('admin.roles',compact("roles"));
+        return view('admin.roles',compact("roles",'authenticUser'));
     }
 
     /**
