@@ -22,7 +22,7 @@ class  AssignRolesController extends Controller
     }
 
     public function assignPermissions(Request $request){
-        $user=Auth::user();
+       
         collect($request->permissions)
             ->each(function ($permissionData, $roleId) {
                 $role = Role::findById($roleId);

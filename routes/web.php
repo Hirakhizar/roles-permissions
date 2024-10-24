@@ -16,8 +16,8 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
-    $user=Auth::user();
-    return view('layouts.masterFile',compact('user'));
+    $authenticUser=Auth::user();
+    return view('layouts.masterFile',compact('authenticUser'));
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
@@ -76,6 +76,6 @@ Route::prefix('posts')->controller(PostController::class)->group(function(){
     // Update the edit route to accept an ID parameter
     Route::get('/edit/{id}', 'edit')->name('posts.edit'); // This should include {id} to fetch a specific role
 
-    Route::post('/update/{id}', 'update')->name('posts.update'); // This is fine as it is
-    Route::delete('/delete/{id}', 'destroy')->name('posts.destroy'); // Change to DELETE method and add {id}
+    Route::post('/update/{post}', 'update')->name('posts.update'); // This is fine as it is
+    Route::delete('/delete/{post}', 'destroy')->name('posts.destroy'); // Change to DELETE method and add {id}
 });

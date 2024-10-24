@@ -67,6 +67,7 @@
                      </a>
                  </li>
              @endif
+             @if($authenticUser->hasRole('admin')||$authenticUser->hasRole('editor'))
              <li class="nav-item">
                  <a class="nav-link text-white" href="{{ route('categories') }}">
                      <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -75,6 +76,7 @@
                      <span class="nav-link-text ms-1">Categories</span>
                  </a>
              </li>
+             @endif
              <li class="nav-item">
                  <a class="nav-link text-white" href="{{ route('posts') }}">
                      <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -85,7 +87,7 @@
              </li>
 
 
-             <li class="nav-item">
+             {{-- <li class="nav-item">
                  <a class="nav-link text-white " href="./pages/tables.html">
 
                      <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -192,7 +194,7 @@
 
          </ul>
      </div>
-
+ --}}
 
 
  </aside>
